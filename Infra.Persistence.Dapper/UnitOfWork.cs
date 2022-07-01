@@ -1,10 +1,5 @@
 ﻿using Solicity.Domain.Ports;
 using Solicity.Domain.Ports.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infra.Persistence.Dapper
 {
@@ -15,20 +10,23 @@ namespace Infra.Persistence.Dapper
         public IUserRepository Users { get; set; }
         public ITopicRepository Topics { get; set; }
         public IIssueRepository Issues { get; set; }
+        public IIssueCommentRepository IssuesComments { get; set; }
 
-        public UnitOfWork(DbSession session, 
-            IUserRepository users, 
-            ITopicRepository topics, 
-            IIssueRepository issues)
+        public UnitOfWork(DbSession session,
+            IUserRepository users,
+            ITopicRepository topics,
+            IIssueRepository issues,
+            IIssueCommentRepository issuesComments)
         {
             _session = session;
             Users = users;
             Topics = topics;
             Issues = issues;
+            IssuesComments = issuesComments;
         }
 
         public void BeginTransaction()
-        { 
+        {
             _session.Transaction = _session.Connection.BeginTransaction();
         }
 

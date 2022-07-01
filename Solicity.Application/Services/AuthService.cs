@@ -36,8 +36,8 @@ namespace Solicity.Application.Services
                 UpdatedAt = DateTime.Now,
                 UpdatedBy = user_id,
 
-                Username = userCreationDTO.Username,
-                Email = userCreationDTO.Email,
+                Username = userCreationDTO.Username.ToLower(),
+                Email = userCreationDTO.Email.ToLower(),
                 Password = userCreationDTO.Password,
                 FirstName = userCreationDTO.FirstName,
                 LastName = userCreationDTO.LastName,

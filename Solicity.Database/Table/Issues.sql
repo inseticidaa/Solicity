@@ -10,6 +10,6 @@
     -- Issue data
     [TopicId] UNIQUEIDENTIFIER NOT NULL,
     [Code] VARCHAR(50) NOT NULL UNIQUE,
-    [IsClosed] BIT NOT NULL, 
+    [Status] INT NOT NULL DEFAULT 1, 
     [Title] VARCHAR(100) NOT NULL,
 )

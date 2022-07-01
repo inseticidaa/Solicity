@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Solicity.Domain.DTOs;
 using Solicity.Domain.Services;
@@ -40,13 +39,13 @@ namespace Solicity.Api.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] string? search, [FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
             try
             {
                 var requesterId = Guid.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == "Id")!.Value);
 
-                var topics = await _topicService.GetAllAsync();
+                var topics = await _topicService.GetAllAsync(page, pageSize, search);
 
                 return Ok(topics);
             }

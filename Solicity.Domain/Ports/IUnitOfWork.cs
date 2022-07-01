@@ -1,9 +1,4 @@
 ﻿using Solicity.Domain.Ports.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Solicity.Domain.Ports
 {
@@ -12,6 +7,7 @@ namespace Solicity.Domain.Ports
         IUserRepository Users { get; set; }
         ITopicRepository Topics { get; set; }
         IIssueRepository Issues { get; set; }
+        IIssueCommentRepository IssuesComments { get; set; }
 
         void BeginTransaction();
         void Commit();

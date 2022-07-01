@@ -1,9 +1,4 @@
 ﻿using Solicity.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Solicity.Domain.DTOs
 {
@@ -23,7 +18,7 @@ namespace Solicity.Domain.DTOs
 
         public static implicit operator TopicDTO(Topic topic)
         {
-            return new TopicDTO 
+            return new TopicDTO
             {
                 Id = topic.Id,
                 CreatedAt = topic.CreatedAt,

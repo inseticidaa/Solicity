@@ -1,11 +1,6 @@
-﻿using Solicity.Domain.Entities;
+﻿using Dapper;
+using Solicity.Domain.Entities;
 using Solicity.Domain.Ports.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dapper;
 
 namespace Infra.Persistence.Dapper.Repositories
 {
@@ -23,7 +18,7 @@ namespace Infra.Persistence.Dapper.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<User>> GetAllAsync()
+        public Task<IEnumerable<User>> GetAllAsync(int page, int pageSize, IDictionary<string, string> filters)
         {
             throw new NotImplementedException();
         }

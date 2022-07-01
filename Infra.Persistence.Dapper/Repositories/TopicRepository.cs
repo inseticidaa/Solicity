@@ -1,15 +1,10 @@
-﻿using Solicity.Domain.Entities;
+﻿using Dapper;
+using Solicity.Domain.Entities;
 using Solicity.Domain.Ports.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dapper;
 
 namespace Infra.Persistence.Dapper.Repositories
 {
-    public class TopicRepository: ITopicRepository
+    public class TopicRepository : ITopicRepository
     {
         private DbSession _session;
 
@@ -23,7 +18,7 @@ namespace Infra.Persistence.Dapper.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Topic>> GetAllAsync()
+        public async Task<IEnumerable<Topic>> GetAllAsync(int page, int pageSize, IDictionary<string, string> filters)
         {
             var query = @"
                 SELECT [Id]

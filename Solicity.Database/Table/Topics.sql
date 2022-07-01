@@ -8,8 +8,8 @@
     [CreatedBy] UNIQUEIDENTIFIER NOT NULL, 
 
     -- Topic data
-    [Name] VARCHAR(50) NOT NULL, 
-    [Description] VARCHAR(50) NOT NULL, 
-    [Code] VARCHAR(4) NOT NULL, 
+    [Name] VARCHAR(64) NOT NULL, 
+    [Description] VARCHAR(256) NOT NULL,
+    [Code] VARCHAR(4) NOT NULL UNIQUE, 
     [Enabled] BIT NOT NULL,
 )

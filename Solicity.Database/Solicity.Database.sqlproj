@@ -57,10 +57,15 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Table" />
+    <Folder Include="Table\Domain" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Table\Users.sql" />
     <Build Include="Table\Topics.sql" />
     <Build Include="Table\Issues.sql" />
+    <Build Include="Table\IssuesComments.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Solicity.Database.refactorlog" />
   </ItemGroup>
 </Project>

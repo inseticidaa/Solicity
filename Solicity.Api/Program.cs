@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.IdentityModel.Tokens;
+using Solicity.Api.Middleware;
 using Solicity.Application;
 using System.Text;
 
@@ -53,6 +54,12 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    app.UseMiddleware(
+        typeof(SimulatedLatencyMiddleware),
+        TimeSpan.FromMilliseconds(100),
+        TimeSpan.FromMilliseconds(500)
+    );
 }
 
 app.UseCors(x => x

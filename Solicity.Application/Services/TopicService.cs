@@ -3,11 +3,6 @@ using Solicity.Domain.DTOs;
 using Solicity.Domain.Entities;
 using Solicity.Domain.Ports;
 using Solicity.Domain.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Solicity.Application.Services
 {
@@ -33,7 +28,7 @@ namespace Solicity.Application.Services
             var user = await _unitOfWork.Users.GetAsync(requestBy);
             if (user == null) throw new Exception("User not exists");
 
-            var topic = new Topic 
+            var topic = new Topic
             {
                 Id = Guid.NewGuid(),
                 CreatedAt = DateTime.Now,
@@ -51,9 +46,10 @@ namespace Solicity.Application.Services
             return (TopicDTO)topic;
         }
 
-        public async Task<IList<TopicDTO>> GetAllAsync()
+        public async Task<IList<TopicDTO>> GetAllAsync(int page, int pageSize, string search)
         {
-            var topics = await _unitOfWork.Topics.GetAllAsync();
+            var filters = new Dictionary<string, string>();
+            var topics = await _unitOfWork.Topics.GetAllAsync(page, pageSize, filters);
 
             return topics.Select(x => (TopicDTO)x).ToList();
         }
